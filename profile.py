@@ -70,24 +70,11 @@ iface = node.addInterface()
 node.disk_image = params.osImage
 
 
-node.disk_image = rspec.RemoteBlockstore("image", "/dev/sda1", image_url)
 image_url = "https://drive.google.com/file/d/1CT4z1P6jElWZs5MLh_aOiuZoyPweVMpe/view?usp=share_link"
+node.disk_image = rspec.RemoteBlockstore("image", "/dev/sda1", image_url)
 
-qemu_commad = "sudo qemu-system-x86_64 -machine pc -cpu Nehalem \
--m 1G -drive file=/local/repository/qemu-images/image.qcow2 \
--device e1000,netdev=net \
--netdev user,id=net,hostfwd=tcp::2222-:22 \
--kernel /local/repository/qemu-images/kernel \
--initrd /local/repository/qemu-images/initrd \
--nographic -append \"root=LABEL=rootfs console=ttyS0\""
-
-
-startup_script = f"""#!/bin/bash
-wget -O /local/repository/qemu-images/image.qcow2 {image_url}
-{qemu_command}
-"""
 
 node.addService(rspec.Execute(shell="bash", command=DEPLOY_ENV))
-node.addService(pg.Execute(shell="bash", command=startup_script))
+node.addService(rspec.Execute(shell="bash", command=RUN_INSTANCE))
 
 portal.context.printRequestRSpec()
