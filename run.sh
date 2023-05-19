@@ -37,6 +37,8 @@
 #-nographic -net nic,model=rtl8139 \
 #-net tap,ifname=tap0
 
+python3 run2.py
+
 sudo qemu-system-x86_64 -machine pc -cpu Nehalem -m 1G \
 -drive file=/local/repository/qemu-images/image.qcow2 -device e1000,netdev=net \
 -netdev user,id=net,hostfwd=tcp::2222-:22 -kernel /local/repository/qemu-images/kernel \
