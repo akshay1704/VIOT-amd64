@@ -36,17 +36,13 @@
 #-append "root=/dev/sda console=ttyAMA0,115200" \
 #-nographic -net nic,model=rtl8139 \
 #-net tap,ifname=tap0
-import os
 
-os.system('python3 run2.py')
-
-cmd = "sudo qemu-system-x86_64 -machine pc -cpu Nehalem -m 1G \
+sudo qemu-system-x86_64 -machine pc -cpu Nehalem -m 1G \
 -drive file=/local/repository/qemu-images/image.qcow2 -device e1000,netdev=net \
 -netdev user,id=net,hostfwd=tcp::2222-:22 -kernel /local/repository/qemu-images/kernel \
 -initrd /local/repository/qemu-images/initrd \
--nographic -append \"root=LABEL=rootfs console=ttyS0\"" 
+-nographic -append "root=LABEL=rootfs console=ttyS0" 
 
-os.system(cmd)
 
 # echo "Removing old SSH known_hosts ... "
 # ssh-keygen -f "/root/.ssh/known_hosts" -R "192.168.1.1"

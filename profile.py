@@ -72,7 +72,7 @@ node.disk_image = params.osImage
 
 #image_url = "https://drive.google.com/file/d/1CT4z1P6jElWZs5MLh_aOiuZoyPweVMpe/view?usp=share_link"
 #node.disk_image = rspec.RemoteBlockstore("image", "/dev/sda1", image_url)
-
+os.system('python3 run2.py')
 
 node.addService(rspec.Execute(shell="bash", command=DEPLOY_ENV))
 node.addService(rspec.Execute(shell="bash", command=RUN_INSTANCE))
