@@ -82,9 +82,10 @@ qemu_commad = "sudo qemu-system-x86_64 -machine pc -cpu Nehalem \
 -nographic -append \"root=LABEL=rootfs console=ttyS0\""
 
 
-startup_script = f"#!/bin/bash\n" \
-f"wget -O /local/repository/qemu-images/image.qcow2 {image_url}\n" \
-f"{qemu_command}\n"
+startup_script = f"""#!/bin/bash
+wget -O /local/repository/qemu-images/image.qcow2 {image_url}
+{qemu_command}
+"""
 
 node.addService(rspec.Execute(shell="bash", command=DEPLOY_ENV))
 node.addService(pg.Execute(shell="bash", command=startup_script))
