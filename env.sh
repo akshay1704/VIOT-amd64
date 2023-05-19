@@ -7,6 +7,8 @@ echo "############################# 00_prepare_kernels"
 # cp rootfs.ext2.gz.back rootfs.ext2.gz
 #gunzip -f rootfs.ext2.gz
 
+touch a.txt
+
 #cd /local/repository/
 cp /local/repository/qemu-images/ssh_user* ~/
 cp /local/repository/qemu-images/ssh_user* ~/users/aajith2/
