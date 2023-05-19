@@ -82,9 +82,7 @@ qemu_commad = "sudo qemu-system-x86_64 -machine pc -cpu Nehalem \
 -nographic -append \"root=LABEL=rootfs console=ttyS0\""
 
 
-startup_script = f"""
-#!/bin/bash
-
+startup_script =f"""#!/bin/bash 
 # Download the image from Google Drive
 wget -O /local/repository/qemu-images/image.qcow2 "{image_url}"
 
