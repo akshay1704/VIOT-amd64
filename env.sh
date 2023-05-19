@@ -16,7 +16,7 @@ cp /local/repository/qemu-images/ssh_user* ~/users/aajith2/
 sleep 3
 echo "############################# 01 install dependencies"
 
-sudo apt-get update; sudo apt-get install qemu -y; sudo apt-get install uml-utilities -y; sudo apt-get install sshpass -y; sudo apt-get install systemd -y; sudo apt-get install qemu-system-x86;sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils; sudo adduser root libvirt; 
+sudo apt-get update; sudo apt-get install qemu -y; sudo apt-get install uml-utilities -y; sudo apt-get install sshpass -y; sudo apt-get install systemd -y; sudo apt-get install qemu-system-x86; 
 
 
 ############################# 02_setup_host_net

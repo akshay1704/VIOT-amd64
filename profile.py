@@ -76,4 +76,4 @@ node.disk_image = params.osImage
 node.addService(rspec.Execute(shell="bash", command=DEPLOY_ENV))
 node.addService(rspec.Execute(shell="bash", command=RUN_INSTANCE))
 
-portal.context.printRequestRSpec()
+portal.context.printRequestRSpec(request)
