@@ -37,7 +37,7 @@ pc.defineParameter("osImage", "Select OS image",
 
 params = pc.bindParameters()
 
-#USER = os.environ["USER"]
+USER = os.environ["USER"]
 
 # CHMOD = "chmod 700 /local/repository/*.sh"
 # OQINSTALL = "sudo bash /local/repository/os-ins.sh"
