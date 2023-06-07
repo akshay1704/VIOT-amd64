@@ -14,7 +14,6 @@ pc = portal.Context()
 #
 # This is a git repo with my dot files and junk I like.
 #
-# URL = "https://gitlab.flux.utah.edu/stoller/dots/-/raw/master/dots.tar.gz"
 
 
 imageList = [('urn:publicid:IDN+emulab.net+image+Super-Fuzzing:vm-with-mac', 'UBUNTU 18.04 with packages'),
@@ -27,28 +26,9 @@ pc.defineParameter("osImage", "Select OS image",
                    imageList[1], imageList,
                    longDescription="")
 
-# urn:publicid:IDN+utah.cloudlab.us:super-fuzzing-pg0+ltdataset+DataStorage
-# pc.defineParameter("DATASET", "URN of your dataset",
-#                    portal.ParameterType.STRING,
-#                    "urn:publicid:IDN+utah.cloudlab.us:super-fuzzing-pg0+ltdataset+DataStorage")
-
-# pc.defineParameter("MPOINT", "Mountpoint for file system",
-#                    portal.ParameterType.STRING, "/mydata")
-
 params = pc.bindParameters()
 
 USER = os.environ["USER"]
-
-# CHMOD = "chmod 700 /local/repository/*.sh"
-# OQINSTALL = "sudo bash /local/repository/os-ins.sh"
-# MNT = "sudo mkdir -p /mnt/extra"
-# MNT_1 = "sudo mkfs.ext4 /dev/nvme0n1p4"
-# MNT_2 = "sudo mount /dev/nvme0n1p4 /mnt/extra"
-
-# UNTAR = "sudo -u {} nohup python3 /local/repository/sine.py > /dev/null &"
-# UNTAR = UNTAR.format(USER)
-# PKG_UPDATE = "sudo apt update"
-# INSTALL_PKG = "sudo apt install byobu build-essential vim dmg2img tesseract-ocr tesseract-ocr-eng -y"
 
 
 
@@ -69,9 +49,6 @@ node.hardware_type = "m510"
 iface = node.addInterface()
 node.disk_image = params.osImage
 
-
-#image_url = "https://drive.google.com/file/d/1CT4z1P6jElWZs5MLh_aOiuZoyPweVMpe/view?usp=share_link"
-#node.disk_image = rspec.RemoteBlockstore("image", "/dev/sda1", image_url)
 
 node.addService(rspec.Execute(shell="bash", command=DEPLOY_ENV))
 node.addService(rspec.Execute(shell="bash", command=RUN_INSTANCE))
